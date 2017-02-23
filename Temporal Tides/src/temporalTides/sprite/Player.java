@@ -116,7 +116,7 @@ public class Player extends Sprite
 	{
 		if(e.getBounds().intersects(this.getBounds()) && !delayDamage)
 		{
-			health -= e.damage;
+			e.getAttack(this);
 			delayDamage = true;
 		}
 	}

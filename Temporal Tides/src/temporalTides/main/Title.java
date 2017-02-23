@@ -85,7 +85,7 @@ public class Title extends JPanel implements Runnable, KeyListener
 		Graphics g2 = getGraphics();
 		g2.drawImage(image, 0, 0, WIDTH, BAR_HEIGHT, null);
 		g2.dispose();
-		g.clearRect(0, 0, WIDTH, HEIGHT);
+		g.clearRect(0, 0, WIDTH, BAR_HEIGHT);
 	}
 	
 	public void intitalize()

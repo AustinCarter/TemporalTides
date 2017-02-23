@@ -13,6 +13,11 @@ public abstract class Enemy extends Sprite
 		super(x, y);
 	}
 	
+	public void getAttack(Player p)
+	{
+		p.health -= damage;
+	}
+	
 	
 	public void Update(){}
 
