@@ -4,12 +4,14 @@ import java.util.ArrayList;
 
 import temporalTides.sprite.Brute;
 import temporalTides.sprite.Enemy;
+import temporalTides.sprite.Flyer;
 
 public class Room 
 {
 	
 	ArrayList<Tile> tiles = new ArrayList<>();
 	ArrayList<Enemy> enemies= new ArrayList<>();
+	
 	
 	boolean cleared = true;
 	
@@ -31,6 +33,7 @@ public class Room
 			tiles.add(new Tile(500,575));
 			
 			enemies.add(new Brute(550,520));
+			enemies.add(new Flyer(200,200));
 		}
 		else
 		{

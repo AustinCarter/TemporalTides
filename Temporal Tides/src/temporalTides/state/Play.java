@@ -6,7 +6,6 @@ import java.awt.Graphics2D;
 import temporalTides.controller.KeyController;
 import temporalTides.controller.StateController;
 import temporalTides.map.Map;
-import temporalTides.sprite.Brute;
 import temporalTides.sprite.Enemy;
 import temporalTides.sprite.Player;
 
