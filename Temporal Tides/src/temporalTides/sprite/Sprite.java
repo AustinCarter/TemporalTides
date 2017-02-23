@@ -69,14 +69,27 @@ public abstract class  Sprite
 	
 	public void update()
 	{
-		if(y > Title.HEIGHT - (50 + height))
-			y = Title.HEIGHT - (50 + height);
+		
 
 		
 		vy += gravity;
 		if(vy > 5) vy = 5; //terminal velocity
+		
+		if(y > Title.HEIGHT - (50 + height))
+		{
+			y = Title.HEIGHT - (50 + height);
+			vy = 0;
+		}
+		
 		x += vx;
 		y += vy;
+		
+		
+		
+		if(x < 0)
+			x = 0;
+		if(x > 800)
+			x = 800;
 	}
 	
 	public void setPosition(double x, double y)
@@ -106,6 +119,16 @@ public abstract class  Sprite
 	{
 		return new Rectangle((int)(x  - width / 2),(int)(y  - height / 2),width,height);
 		
+	}
+	
+	public double getX()
+	{
+		return x;
+	}
+	
+	public double getY()
+	{
+		return y;
 	}
 	
 	public void draw(Graphics2D g)

@@ -85,6 +85,8 @@ public class Player extends Sprite
 		if(vy > 5) vy = 5; //terminal velocity
 		x += vx;
 		y += vy;
+		
+		
 		/*if(down)
 		{
 			
