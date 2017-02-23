@@ -25,6 +25,7 @@ public class Play extends State
 	{
 		super(state);
 	}
+	
 	@Override
 	public void init()
 	{
@@ -103,6 +104,7 @@ public class Play extends State
 		{
 			currentMap.nextRoom();
 			player.setPosition(50,520);
+			player.clearAttacks();
 		}
 		
 	}

@@ -32,8 +32,8 @@ public class HUD
 		
 		g.fillRect(20, Title.BAR_HEIGHT - 60, health, 20);
 		
-		g.drawString("" + MouseController.mousex + "," + MouseController.mousey, 20, 20);
-		g.drawString("Pressed: " + MouseController.isPressed() + " Held:" + MouseController.isHeld() , 20, 40);
+		//g.drawString("" + MouseController.mousex + "," + MouseController.mousey, 20, 20);
+		//g.drawString("Pressed: " + MouseController.isPressed() + " Held:" + MouseController.isHeld() , 20, 40);
 	}
 	
 	public void init()

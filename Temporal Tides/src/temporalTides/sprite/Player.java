@@ -8,6 +8,7 @@ import temporalTides.controller.KeyController;
 import temporalTides.controller.MouseController;
 import temporalTides.main.Title;
 import temporalTides.map.Tile;
+import temporalTides.playerStates.*;
 
 public class Player extends Sprite
 {
@@ -22,6 +23,8 @@ public class Player extends Sprite
 	private final int DELAYTIME = 10;//amount of ticks that damage is delayed for
 	private int delayed = 0;//the current amount of ticks that have passed since damage was last taken
 	
+	PlayerState state;
+	
 	
 	public Player(double x, double y) 
 	{
@@ -29,7 +32,13 @@ public class Player extends Sprite
 		height = 32;
 		width = 16;
 		health = 100;
+		state = new GeneralState(this);
 	}
+	
+	public boolean collide(Attack a) {return 	state.collide(a);}
+	
+	public Rectangle getBounds() {return state.getBounds();}
+	
 	
 	public void collide(Tile tile)
 	{
@@ -65,68 +74,14 @@ public class Player extends Sprite
 	}
 	
 	
-	public void update()
+	public void update() {state.update();}
+	
+	public void setState(PlayerState state)
 	{
-		if(MouseController.isPressed())
-		{
-			attack();
-		}
-		
-		if(KeyController.isDown(KeyController.LEFT))
-		{
-			x -= 5;
-		}
-		if(KeyController.isDown(KeyController.RIGHT))
-		{
-			x += 5;
-		}
-		if(KeyController.isPressed(KeyController.UP) && !airborne)
-		{
-			vy -= 5;
-			airborne = true;
-		}
-		
-		else if(y > Title.HEIGHT - (50 + height))
-		{
-			y = Title.HEIGHT - (50 + height);
-			land();
-		}
-		
-		vy += gravity;
-		if(vy > 5) vy = 5; //terminal velocity
-		x += vx;
-		y += vy;
-		
-		if(x < 0)
-			x = 0;
-		if(x > 800)
-			x = 800;
-		
-		if(delayDamage && delayed > DELAYTIME)
-		{
-			delayDamage = false;
-			delayed = 0;		
-		}
-		else if(delayDamage)
-			delayed ++;
-		
-		for(Attack a : myAttacks)
-			a.update();
-		
-		/*if(down)
-		{
-			
-		}*/
+		this.state = state;
 	}
 	
-	public void getDamage(Enemy e)
-	{
-		if(e.getBounds().intersects(this.getBounds()) && !delayDamage)
-		{
-			e.getAttack(this);
-			delayDamage = true;
-		}
-	}
+	public void getDamage(Enemy e){state.getDamage(e);}
 	
 	public void land()
 	{
@@ -136,24 +91,14 @@ public class Player extends Sprite
 	
 	public void draw(Graphics2D g)
 	{
-		super.draw(g);
+		state.draw(g);
 		
 		for(Attack a: myAttacks)
 			a.draw(g);
-		
-		/*if(!delayDamage)
-			g.setColor(Color.GREEN);
-		else
-			g.setColor(Color.ORANGE);
-		
-		g.fillRect(20,20,health,20);
-		*/
 	}
-	
-	public boolean getDelay()
-	{
-		return delayDamage;
-	}
+		
+			
+	public boolean getDelay(){return state.getDelay();}
 	
 	
 	

@@ -57,6 +57,7 @@ public class Attack
 		
 	}
 	
+	public int getDamage(){return damage;}
 	public Rectangle getBounds()
 	{
 		return new Rectangle((int)(x - width/2), (int)(y - height/2),(int)height,(int)width);

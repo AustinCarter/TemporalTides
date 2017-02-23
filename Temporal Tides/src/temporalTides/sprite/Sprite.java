@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import temporalTides.main.Title;
 import temporalTides.map.Tile;
+import temporalTides.playerStates.PlayerState;
 
 public abstract class  Sprite
 {
@@ -23,6 +24,8 @@ public abstract class  Sprite
 	
 	protected Animation animation;
 	protected int currentAnimation;
+	
+	
 	
 	protected ArrayList<Attack> myAttacks = new ArrayList<>();
 	
@@ -113,7 +116,10 @@ public abstract class  Sprite
 		myAttacks.add(new Attack(x,y,20,8,300));
 	}
 	
-	
+	public void clearAttacks()
+	{
+		myAttacks = new ArrayList<Attack>();
+	}
 	
 	public void setPosition(double x, double y)
 	{
@@ -138,37 +144,6 @@ public abstract class  Sprite
 		gravity = d;
 	}
 	
-	public Rectangle getBounds()
-	{
-		return new Rectangle((int)(x  - width / 2),(int)(y  - height / 2),width,height);
-		
-	}
-	
-	public double getX()
-	{
-		return x;
-	}
-	
-	public double getY()
-	{
-		return y;
-	}
-	
-	public ArrayList<Attack> getAttacks()
-	{
-		return myAttacks;
-	}
-	
-	public int getHealth()
-	{
-		return health;
-	}
-	
-	public boolean isDead()
-	{
-		return health <= 0;
-	}
-	
 	public void draw(Graphics2D g)
 	{
 		//g.drawImage(animation.getImage(),(int)(x  - width / 2),(int)(y  - height / 2),null);
@@ -176,8 +151,43 @@ public abstract class  Sprite
 		g.drawRect((int)(x  - width / 2),(int)(y  - height / 2),width,height);
 	}
 	
+	public Rectangle getBounds()
+	{
+		return new Rectangle((int)(x  - width / 2),(int)(y  - height / 2),width,height);
+		
+	}
 	
+	public double getX(){return x;}
 	
+	public double getY(){return y;}
 	
+	public int getHeight(){return height;}
+	
+	public ArrayList<Attack> getAttacks(){return myAttacks;}
+	
+	public int getHealth(){return health;}
+	
+	public void setHealth(int h){health = h;}
+
+	public void setHeight(int height) {this.height = height;}
+
+	public int getWidth() {return width;}
+
+	public void setWidth(int width) {this.width = width;}
+	
+	public void setX(double x){this.x = x;}
+	
+	public void setY(double y){this.y = y;}
+
+	public double getVx() {return vx;}
+
+	public void setVx(double vx) {this.vx = vx;}
+
+	public double getVy() {return vy;}
+
+	public void setVy(double vy) {this.vy = vy;}
+
+	public boolean isDead(){return health <= 0;}
+			
 
 }
