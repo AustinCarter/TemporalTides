@@ -7,6 +7,7 @@ import temporalTides.controller.KeyController;
 import temporalTides.controller.StateController;
 import temporalTides.map.Map;
 import temporalTides.sprite.Brute;
+import temporalTides.sprite.Enemy;
 import temporalTides.sprite.Player;
 
 
@@ -15,7 +16,6 @@ public class Play extends State
 {
 	private static Player player;
 	private Map currentMap;
-	private Brute enemy;
 	
 	
 	public Play(StateController state)
@@ -25,9 +25,9 @@ public class Play extends State
 	@Override
 	public void init()
 	{
-		currentMap = new Map(); //TEMP CODE
 		player = new Player(50,520);
-		enemy = new Brute(550,520);
+		currentMap = new Map(); //TEMP CODE
+		
 		
 	}
 
@@ -35,8 +35,11 @@ public class Play extends State
 	public void update() 
 	{
 		player.update();
-		enemy.update();
-		enemy.collide(currentMap.getRoom().getTiles());
+		for(Enemy e: currentMap.getEnemies())
+		{
+			e.update();
+			e.collide(currentMap.getRoom().getTiles());
+		}
 		player.collide(currentMap.getRoom().getTiles());
 		process();
 		
@@ -47,7 +50,10 @@ public class Play extends State
 	{
 		player.draw(g);	
 		currentMap.draw(g);
-		enemy.draw(g);
+		for(Enemy e: currentMap.getEnemies())
+		{
+			e.draw(g);
+		}
 	}
 	
 	

@@ -5,6 +5,7 @@ import java.awt.Graphics2D;
 
 public class Brute extends Enemy
 {
+	
 	public Brute(double x, double y) 
 	{
 		super(x, y);

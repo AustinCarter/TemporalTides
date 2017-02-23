@@ -1,9 +1,11 @@
 package temporalTides.map;
 
 import java.awt.Graphics2D;
+import java.util.ArrayList;
 
 import temporalTides.main.Title;
 import temporalTides.sprite.Sprite;
+import temporalTides.sprite.Enemy;
 
 public class Map 
 {
@@ -27,6 +29,11 @@ public class Map
 		currentRoom = currentRoom + 1;
 		if(currentRoom >= rooms.length) currentRoom = 0; //TEMP: handle outOfBounds until map-changing/end screens are handled
 		
+	}
+	
+	public ArrayList<Enemy> getEnemies()
+	{
+		return rooms[currentRoom].getEnemies();
 	}
 	
 	public void setRoom(int i)
