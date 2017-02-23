@@ -12,6 +12,7 @@ public class Brute extends Enemy
 		height = 32;
 		width = 16;
 		damage = 5;
+		health = 50;
 	}
 	
 	public void draw(Graphics2D g)

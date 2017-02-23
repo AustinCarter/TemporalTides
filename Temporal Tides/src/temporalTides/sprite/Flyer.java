@@ -13,6 +13,7 @@ public class Flyer extends Enemy
 		height = 16;
 		width = 16;
 		damage = 5;
+		health = 50;
 	}
 	
 	public void update()

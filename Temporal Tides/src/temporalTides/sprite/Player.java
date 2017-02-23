@@ -5,6 +5,7 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
 import temporalTides.controller.KeyController;
+import temporalTides.controller.MouseController;
 import temporalTides.main.Title;
 import temporalTides.map.Tile;
 
@@ -66,7 +67,10 @@ public class Player extends Sprite
 	
 	public void update()
 	{
-		
+		if(MouseController.isPressed())
+		{
+			attack();
+		}
 		
 		if(KeyController.isDown(KeyController.LEFT))
 		{
@@ -106,6 +110,9 @@ public class Player extends Sprite
 		else if(delayDamage)
 			delayed ++;
 		
+		for(Attack a : myAttacks)
+			a.update();
+		
 		/*if(down)
 		{
 			
@@ -131,6 +138,9 @@ public class Player extends Sprite
 	{
 		super.draw(g);
 		
+		for(Attack a: myAttacks)
+			a.draw(g);
+		
 		/*if(!delayDamage)
 			g.setColor(Color.GREEN);
 		else
@@ -145,22 +155,6 @@ public class Player extends Sprite
 		return delayDamage;
 	}
 	
-	/*public void setLeft(boolean b)
-	{
-		left = b;
-	}
-	public void setRight(boolean b)
-	{
-		right = b;
-	}
-	public void setUp(boolean b)
-	{
-		up = b;
-	}
-	public void setDown(boolean b)
-	{
-		down = b;
-	}*/
 	
 	
 }

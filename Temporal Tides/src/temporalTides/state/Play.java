@@ -2,11 +2,13 @@ package temporalTides.state;
 
 
 import java.awt.Graphics2D;
+import java.util.Iterator;
 
 import temporalTides.HUD.HUD;
 import temporalTides.controller.KeyController;
 import temporalTides.controller.StateController;
 import temporalTides.map.Map;
+import temporalTides.sprite.Attack;
 import temporalTides.sprite.Enemy;
 import temporalTides.sprite.Player;
 
@@ -38,11 +40,32 @@ public class Play extends State
 	{
 		player.update();
 		hud.update();
-		for(Enemy e: currentMap.getEnemies())
+		
+		Iterator<Enemy> enemies= currentMap.getEnemies().listIterator();
+		Enemy e;
+		while(enemies.hasNext())
 		{
+			e = enemies.next();
+			
 			e.update();
 			e.collide(currentMap.getRoom().getTiles());
 			player.getDamage(e);
+			
+			Iterator<Attack> attacks= player.getAttacks().listIterator();
+			Attack a;
+			while(attacks.hasNext())
+			{
+				a = attacks.next();
+				if(e.collide(a))
+				{
+					attacks.remove();
+					if(e.isDead())
+						enemies.remove();
+						
+				}
+			}
+			
+			
 		}
 		player.collide(currentMap.getRoom().getTiles());
 		process();
@@ -58,6 +81,8 @@ public class Play extends State
 		{
 			e.draw(g);
 		}
+		
+		
 		
 		hud.draw(g);
 	}

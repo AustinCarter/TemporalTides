@@ -24,12 +24,28 @@ public abstract class  Sprite
 	protected Animation animation;
 	protected int currentAnimation;
 	
+	protected ArrayList<Attack> myAttacks = new ArrayList<>();
+	
 	
 	public Sprite(double x, double y)
 	{
 		this.x = x;
 		this.y = y;
 	}
+	
+	public boolean collide(Attack a)
+	{
+		boolean hit = this.getBounds().intersects(a.getBounds());
+		
+		if(hit)
+		{
+			this.health -= a.damage;
+		}
+		
+			
+		return hit;		
+	}
+	
 	
 	public void collide(ArrayList<Tile> tiles)
 	{
@@ -71,9 +87,7 @@ public abstract class  Sprite
 	
 	public void update()
 	{
-		
-
-		
+			
 		vy += gravity;
 		if(vy > 5) vy = 5; //terminal velocity
 		
@@ -93,6 +107,13 @@ public abstract class  Sprite
 		if(x > 800)
 			x = 800;
 	}
+		
+	public void attack()
+	{
+		myAttacks.add(new Attack(x,y,20,8,300));
+	}
+	
+	
 	
 	public void setPosition(double x, double y)
 	{
@@ -133,9 +154,19 @@ public abstract class  Sprite
 		return y;
 	}
 	
+	public ArrayList<Attack> getAttacks()
+	{
+		return myAttacks;
+	}
+	
 	public int getHealth()
 	{
 		return health;
+	}
+	
+	public boolean isDead()
+	{
+		return health <= 0;
 	}
 	
 	public void draw(Graphics2D g)

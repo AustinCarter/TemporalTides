@@ -5,18 +5,25 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
 import temporalTides.controller.KeyController;
+import temporalTides.controller.MouseController;
 import temporalTides.controller.StateController;
 
-public class Title extends JPanel implements Runnable, KeyListener
+public class Title extends JPanel implements Runnable, KeyListener, MouseListener, MouseMotionListener
 {
 	public static int WIDTH = 800;
 	public static int HEIGHT = 640;
 	public static int BAR_HEIGHT = HEIGHT + 64;
+	
+	private int mousex;
+	private int mousey;
 	
 	private Thread thread;	
 	private boolean go;
@@ -71,6 +78,7 @@ public class Title extends JPanel implements Runnable, KeyListener
 	{
 		state.update();
 		KeyController.update();
+		MouseController.update(mousex,mousey);
 	}
 	
 	// draws game
@@ -102,6 +110,8 @@ public class Title extends JPanel implements Runnable, KeyListener
 		if(thread == null)
 		{
 			addKeyListener(this);
+			addMouseListener(this);
+			addMouseMotionListener(this);
 			thread = new Thread(this);
 			thread.start();
 		}
@@ -113,5 +123,21 @@ public class Title extends JPanel implements Runnable, KeyListener
 	public void keyReleased(KeyEvent e) {KeyController.process(e.getKeyCode(), false);}
 	@Override
 	public void keyTyped(KeyEvent e){}
+
+
+	@Override
+	public void mouseDragged(MouseEvent e) {mousex = e.getX(); mousey = e.getY();}
+	@Override
+	public void mouseClicked(MouseEvent arg0) {}
+	@Override
+	public void mouseEntered(MouseEvent arg0) {}
+	@Override
+	public void mouseExited(MouseEvent arg0) {}	
+	@Override
+	public void mousePressed(MouseEvent e){MouseController.process(true); mousex = e.getX(); mousey = e.getY();}
+	@Override
+	public void mouseReleased(MouseEvent e){MouseController.process(false); mousex = e.getX(); mousey = e.getY();}
+	@Override
+	public void mouseMoved(MouseEvent e) {mousex = e.getX(); mousey = e.getY();}
 
 }
