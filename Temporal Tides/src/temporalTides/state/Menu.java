@@ -44,13 +44,19 @@ public class Menu extends State
 	@Override
 	public void process() 
 	{
-		if(KeyController.isPressed(KeyController.DOWN) && selected < options.length - 1) {
+		if(KeyController.isPressed(KeyController.DOWN)) {
 			//JukeBox.play("menuoption");
 			selected++;
+			
+			if(selected >= options.length)
+				selected = 0;
 		}
-		if(KeyController.isPressed(KeyController.UP) && selected > 0) {
+		if(KeyController.isPressed(KeyController.UP) ) {
 			//JukeBox.play("menuoption");
 			selected--;
+			
+			if(selected < 0)
+				selected = options.length - 1;
 		}
 		if(KeyController.isPressed(KeyController.ENTER)) {
 			//JukeBox.play("collect");
@@ -59,6 +65,7 @@ public class Menu extends State
 	}
 	
 	private void selectOption() {
+		
 		if(selected == 0) 
 		{
 			state.setState(StateController.PLAY);

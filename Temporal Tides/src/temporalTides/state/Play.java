@@ -1,12 +1,10 @@
 package temporalTides.state;
 
-import java.awt.Color;
 
 import java.awt.Graphics2D;
 
 import temporalTides.controller.KeyController;
 import temporalTides.controller.StateController;
-import temporalTides.main.Title;
 import temporalTides.map.Map;
 import temporalTides.sprite.Player;
 
@@ -26,7 +24,7 @@ public class Play extends State
 	public void init()
 	{
 		currentMap = new Map(); //TEMP CODE
-		player = new Player(500,500);
+		player = new Player(50,520);
 		
 	}
 
@@ -51,6 +49,11 @@ public class Play extends State
 	{
 		if(KeyController.isPressed(KeyController.ESCAPE))
 			state.setState(state.MENU);
+		if(KeyController.isPressed(KeyController.F) && currentMap.getRoomComplete())
+		{
+			currentMap.nextRoom();
+			player.setPosition(50,520);
+		}
 		
 	}
 
