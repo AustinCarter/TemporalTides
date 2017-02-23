@@ -3,6 +3,7 @@ package temporalTides.state;
 
 import java.awt.Graphics2D;
 
+import temporalTides.HUD.HUD;
 import temporalTides.controller.KeyController;
 import temporalTides.controller.StateController;
 import temporalTides.map.Map;
@@ -14,6 +15,7 @@ import temporalTides.sprite.Player;
 public class Play extends State
 {
 	private static Player player;
+	private static HUD hud;
 	private Map currentMap;
 	
 	
@@ -26,6 +28,7 @@ public class Play extends State
 	{
 		player = new Player(50,520);
 		currentMap = new Map(); //TEMP CODE
+		hud = new HUD(player);
 		
 		
 	}
@@ -34,6 +37,7 @@ public class Play extends State
 	public void update() 
 	{
 		player.update();
+		hud.update();
 		for(Enemy e: currentMap.getEnemies())
 		{
 			e.update();
@@ -54,6 +58,8 @@ public class Play extends State
 		{
 			e.draw(g);
 		}
+		
+		hud.draw(g);
 	}
 	
 	
@@ -61,6 +67,7 @@ public class Play extends State
 	{
 		return player;
 	}
+	
 
 	@Override
 	public void process()

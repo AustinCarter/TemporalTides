@@ -1,6 +1,6 @@
 package temporalTides.sprite;
 
-import java.awt.Color;
+
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
@@ -15,6 +15,7 @@ public class Player extends Sprite
 	private boolean down;
 	private boolean left;
 	private boolean right;*/
+	
 	private boolean airborne = false;
 	private boolean delayDamage = false;
 	private final int DELAYTIME = 10;//amount of ticks that damage is delayed for
@@ -130,12 +131,18 @@ public class Player extends Sprite
 	{
 		super.draw(g);
 		
-		if(!delayDamage)
+		/*if(!delayDamage)
 			g.setColor(Color.GREEN);
 		else
 			g.setColor(Color.ORANGE);
 		
 		g.fillRect(20,20,health,20);
+		*/
+	}
+	
+	public boolean getDelay()
+	{
+		return delayDamage;
 	}
 	
 	/*public void setLeft(boolean b)

@@ -133,6 +133,11 @@ public abstract class  Sprite
 		return y;
 	}
 	
+	public int getHealth()
+	{
+		return health;
+	}
+	
 	public void draw(Graphics2D g)
 	{
 		//g.drawImage(animation.getImage(),(int)(x  - width / 2),(int)(y  - height / 2),null);
