@@ -13,7 +13,7 @@ public class Room
 	ArrayList<Enemy> enemies= new ArrayList<>();
 	
 	
-	boolean cleared = true;
+	//boolean cleared = true;
 	
 	
 	public Room()
@@ -61,7 +61,7 @@ public class Room
 	public boolean checkComplete()
 	{
 		// TODO check that the room is completed
-		return cleared;
+		return enemies.size() == 0;
 	}
 	
 	
