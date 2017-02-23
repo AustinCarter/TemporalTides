@@ -11,6 +11,7 @@ public class Brute extends Enemy
 		super(x, y);
 		height = 32;
 		width = 16;
+		damage = 5;
 	}
 	
 	public void draw(Graphics2D g)

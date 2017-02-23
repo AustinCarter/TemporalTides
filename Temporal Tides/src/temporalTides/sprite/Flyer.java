@@ -12,19 +12,20 @@ public class Flyer extends Enemy
 		//gravity = 0;
 		height = 16;
 		width = 16;
+		damage = 5;
 	}
 	
 	public void update()
 	{
 		if(this.x - target.x > 2.5)
-			x -= 1.5;
+			x -= 1;
 		else if(this.x - target.x < -2.5)
-			x += 1.5;
+			x += 1;
 		
 		if(this.y - target.y > 2.5)
-			y -= 1.5;
+			y -= 1;
 		else if(this.y - target.y < -2.5)
-			y += 1.5;
+			y += 1;
 		
 		
 	}

@@ -1,5 +1,7 @@
 package temporalTides.sprite;
 
+import java.awt.Color;
+import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
 import temporalTides.controller.KeyController;
@@ -14,6 +16,9 @@ public class Player extends Sprite
 	private boolean left;
 	private boolean right;*/
 	private boolean airborne = false;
+	private boolean delayDamage = false;
+	private final int DELAYTIME = 10;//amount of ticks that damage is delayed for
+	private int delayed = 0;//the current amount of ticks that have passed since damage was last taken
 	
 	
 	public Player(double x, double y) 
@@ -21,6 +26,7 @@ public class Player extends Sprite
 		super(x, y);
 		height = 32;
 		width = 16;
+		health = 100;
 	}
 	
 	public void collide(Tile tile)
@@ -91,6 +97,13 @@ public class Player extends Sprite
 		if(x > 800)
 			x = 800;
 		
+		if(delayDamage && delayed > DELAYTIME)
+		{
+			delayDamage = false;
+			delayed = 0;		
+		}
+		else if(delayDamage)
+			delayed ++;
 		
 		/*if(down)
 		{
@@ -98,10 +111,31 @@ public class Player extends Sprite
 		}*/
 	}
 	
+	public void getDamage(Enemy e)
+	{
+		if(e.getBounds().intersects(this.getBounds()) && !delayDamage)
+		{
+			health -= e.damage;
+			delayDamage = true;
+		}
+	}
+	
 	public void land()
 	{
 		vy = 0;
 		airborne = false;
+	}
+	
+	public void draw(Graphics2D g)
+	{
+		super.draw(g);
+		
+		if(!delayDamage)
+			g.setColor(Color.GREEN);
+		else
+			g.setColor(Color.ORANGE);
+		
+		g.fillRect(20,20,health,20);
 	}
 	
 	/*public void setLeft(boolean b)

@@ -38,6 +38,7 @@ public class Play extends State
 		{
 			e.update();
 			e.collide(currentMap.getRoom().getTiles());
+			player.getDamage(e);
 		}
 		player.collide(currentMap.getRoom().getTiles());
 		process();

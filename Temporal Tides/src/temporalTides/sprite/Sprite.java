@@ -17,11 +17,13 @@ public abstract class  Sprite
 	protected double y;	
 	protected double vx = 0;
 	protected double vy = 0;
+	protected int health;
 	
 	protected double gravity = .2;
 	
 	protected Animation animation;
 	protected int currentAnimation;
+	
 	
 	public Sprite(double x, double y)
 	{
