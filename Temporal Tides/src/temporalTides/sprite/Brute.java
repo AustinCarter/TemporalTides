@@ -15,7 +15,7 @@ public class Brute extends Enemy
 	public void draw(Graphics2D g)
 	{
 		g.setColor(Color.MAGENTA);
-		g.drawRect((int)x - height/2, (int)y - height/2, width, height);
+		g.drawRect((int)(x - width/2), (int)(y - height/2), width, height);
 	}
 	
 	public void update()

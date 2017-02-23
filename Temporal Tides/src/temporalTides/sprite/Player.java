@@ -86,6 +86,11 @@ public class Player extends Sprite
 		x += vx;
 		y += vy;
 		
+		if(x < 0)
+			x = 0;
+		if(x > 800)
+			x = 800;
+		
 		
 		/*if(down)
 		{
