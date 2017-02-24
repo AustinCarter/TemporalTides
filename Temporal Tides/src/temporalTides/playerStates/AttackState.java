@@ -11,23 +11,24 @@ import temporalTides.sprite.Attack;
 import temporalTides.sprite.Enemy;
 import temporalTides.sprite.Player;
 
-public class GeneralState implements PlayerState
+public class AttackState implements PlayerState
 {
 	Player player;
+	Attack attack;
 	
-	private boolean airborne = false;
 	private boolean delayDamage = false;
 	private final int DELAYTIME = 10;//amount of ticks that damage is delayed for
 	private int delayed = 0;//the current amount of ticks that have passed since damage was last taken
 	
+	
+	
 	private double gravity = .2;
-	
-	
-
-	public GeneralState(Player player)
+	public AttackState(Player player, Attack attack)
 	{
 		this.player = player;
+		this.attack = attack;
 	}
+	
 	@Override
 	public Rectangle getBounds() 
 	{
@@ -50,43 +51,16 @@ public class GeneralState implements PlayerState
 		{
 			player.setHealth(player.getHealth() - a.getDamage());
 		}
-					
-		return hit;		
 		
-	}
-	
-	public void getDamage(Enemy e)
-	{
-		if(e.getBounds().intersects(this.getBounds()) && !delayDamage)
-		{
-			e.getAttack(player);
-			delayDamage = true;
-		}
+			
+		return hit;	
 	}
 
 	@Override
 	public void update() 
 	{
-		if(MouseController.isPressed())
-		{
-			player.attack();
-		}
 		
-		if(KeyController.isDown(KeyController.LEFT))
-		{
-			player.setX(player.getX() - 5);
-		}
-		if(KeyController.isDown(KeyController.RIGHT))
-		{
-			player.setX(player.getX() + 5);
-		}
-		if(KeyController.isPressed(KeyController.UP) && !airborne)
-		{
-			 player.setVy(-5);;
-			airborne = true;
-		}
-		
-		else if(player.getY() > Title.HEIGHT - (50 + player.getHeight()))
+		if(player.getY() > Title.HEIGHT - (50 + player.getHeight()))
 		{
 			player.setY( Title.HEIGHT - (50 + player.getHeight()));
 			land();
@@ -114,17 +88,30 @@ public class GeneralState implements PlayerState
 		for(Attack a : player.getAttacks())
 			a.update();
 		
-	}
-	
-	public boolean getDelay()
-	{
-		return delayDamage;
+		
 	}
 	
 	public void land()
 	{
 		player.setVy(0);
-		airborne = false;
+		player.airborne = false;
+	}
+
+
+	@Override
+	public void getDamage(Enemy e)
+	{
+		if(e.getBounds().intersects(this.getBounds()) && !delayDamage)
+		{
+			e.getAttack(player);
+			delayDamage = true;
+		}		
+	}
+
+	@Override
+	public boolean getDelay() 
+	{
+		return delayDamage;
 	}
 
 }

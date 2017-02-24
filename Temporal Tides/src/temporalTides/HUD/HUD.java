@@ -30,7 +30,14 @@ public class HUD
 		else
 			g.setColor(Color.ORANGE);
 		
-		g.fillRect(20, Title.BAR_HEIGHT - 60, health, 20);
+		int translate = 128 + 64;
+		
+		g.fillRect(16 + translate - 48, Title.HEIGHT - 48, 256, 32);
+		
+		g.drawRect(288 + translate,Title.HEIGHT - 48, 32, 32);
+		g.drawRect(336 + translate,Title.HEIGHT - 48, 32, 32);
+		g.drawRect(384 + translate,Title.HEIGHT - 48, 32, 32);
+		g.drawRect(432 + translate,Title.HEIGHT - 48, 32, 32);
 		
 		//g.drawString("" + MouseController.mousex + "," + MouseController.mousey, 20, 20);
 		//g.drawString("Pressed: " + MouseController.isPressed() + " Held:" + MouseController.isHeld() , 20, 40);

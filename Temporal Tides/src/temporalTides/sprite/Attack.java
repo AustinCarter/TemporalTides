@@ -23,6 +23,8 @@ public class Attack
 	
 	private double fireAngle;
 	
+	private int realeaseFrame;
+	
 	Animation animation;
 	
 	protected int damage;

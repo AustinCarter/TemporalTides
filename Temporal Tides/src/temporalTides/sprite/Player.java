@@ -4,9 +4,6 @@ package temporalTides.sprite;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
-import temporalTides.controller.KeyController;
-import temporalTides.controller.MouseController;
-import temporalTides.main.Title;
 import temporalTides.map.Tile;
 import temporalTides.playerStates.*;
 
@@ -18,10 +15,7 @@ public class Player extends Sprite
 	private boolean left;
 	private boolean right;*/
 	
-	private boolean airborne = false;
-	private boolean delayDamage = false;
-	private final int DELAYTIME = 10;//amount of ticks that damage is delayed for
-	private int delayed = 0;//the current amount of ticks that have passed since damage was last taken
+	public boolean airborne = false;
 	
 	PlayerState state;
 	

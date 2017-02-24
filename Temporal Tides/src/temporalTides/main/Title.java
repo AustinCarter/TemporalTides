@@ -20,7 +20,6 @@ public class Title extends JPanel implements Runnable, KeyListener, MouseListene
 {
 	public static int WIDTH = 800;
 	public static int HEIGHT = 640;
-	public static int BAR_HEIGHT = HEIGHT + 64;
 	
 	private int mousex;
 	private int mousey;
@@ -38,7 +37,7 @@ public class Title extends JPanel implements Runnable, KeyListener, MouseListene
 	
 	public Title()
 	{
-		setPreferredSize(new Dimension(WIDTH ,BAR_HEIGHT));
+		setPreferredSize(new Dimension(WIDTH ,HEIGHT));
 		setFocusable(true);
 		requestFocus();
 	}
@@ -91,14 +90,14 @@ public class Title extends JPanel implements Runnable, KeyListener, MouseListene
 	private void drawToScreen() 
 	{
 		Graphics g2 = getGraphics();
-		g2.drawImage(image, 0, 0, WIDTH, BAR_HEIGHT, null);
+		g2.drawImage(image, 0, 0, WIDTH, HEIGHT, null);
 		g2.dispose();
-		g.clearRect(0, 0, WIDTH, BAR_HEIGHT);
+		g.clearRect(0, 0, WIDTH, HEIGHT);
 	}
 	
 	public void intitalize()
 	{
-		image = new BufferedImage(WIDTH, BAR_HEIGHT, 1);
+		image = new BufferedImage(WIDTH, HEIGHT, 1);
 		g = (Graphics2D) image.getGraphics();
 		state = new StateController();
 		go = true;
