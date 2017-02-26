@@ -39,6 +39,12 @@ public class Room
 		{
 			tiles.add(new Tile(100,123));
 			tiles.add(new Tile(525,525));
+			tiles.add(new Tile(525,525 - 64));
+			tiles.add(new Tile(525,525 - 48));
+			tiles.add(new Tile(525,525 - 32));
+			tiles.add(new Tile(525,525 - 16));
+			tiles.add(new Tile(525,525 + 16));
+			tiles.add(new Tile(525,525 + 32));
 			tiles.add(new Tile(234,234));
 			tiles.add(new Tile(456,456));
 			
