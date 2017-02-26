@@ -107,8 +107,8 @@ public abstract class  Sprite
 		
 		if(x < 0)
 			x = 0;
-		if(x > 800)
-			x = 800;
+		if(x > Title.WIDTH)
+			x = Title.WIDTH;
 	}
 		
 	public void attack()

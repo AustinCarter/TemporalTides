@@ -18,8 +18,8 @@ import temporalTides.controller.StateController;
 
 public class Title extends JPanel implements Runnable, KeyListener, MouseListener, MouseMotionListener
 {
-	public static int WIDTH = 800;
-	public static int HEIGHT = 640;
+	public static int WIDTH = 1024;
+	public static int HEIGHT = 576;
 	
 	private int mousex;
 	private int mousey;

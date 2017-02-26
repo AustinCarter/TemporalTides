@@ -113,8 +113,8 @@ public abstract class PlayerState
 		
 		if(player.getX() < 0)
 			player.setX(0);
-		if(player.getX() > 800)
-			player.setX(800);
+		if(player.getX() > Title.WIDTH)
+			player.setX(Title.WIDTH);
 		
 		if(delayDamage && delayed > DELAYTIME)
 		{

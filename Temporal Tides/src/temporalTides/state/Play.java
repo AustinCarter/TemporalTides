@@ -85,7 +85,7 @@ public class Play extends State
 		
 		
 		
-		hud.draw(g);
+		//hud.draw(g);
 	}
 	
 	
