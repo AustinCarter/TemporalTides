@@ -113,7 +113,7 @@ public abstract class  Sprite
 		
 	public void attack()
 	{
-		myAttacks.add(new Attack(x,y,20,8,300));
+		myAttacks.add(new Attack(x,y,20,15,300));
 	}
 	
 	public void clearAttacks()

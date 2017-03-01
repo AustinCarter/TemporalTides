@@ -8,6 +8,7 @@ import temporalTides.controller.KeyController;
 import temporalTides.controller.MouseController;
 import temporalTides.main.Title;
 import temporalTides.map.Tile;
+import temporalTides.sprite.Animation;
 import temporalTides.sprite.Attack;
 import temporalTides.sprite.Enemy;
 import temporalTides.sprite.Player;
@@ -19,8 +20,10 @@ public abstract class PlayerState
 	
 	protected boolean airborne = false;
 	protected boolean delayDamage = false;
-	protected final int DELAYTIME = 10;//amount of ticks that damage is delayed for
+	protected final int DELAYTIME = 10;//amount of invincible ticks the player gets after being damaged
 	protected int delayed = 0;//the current amount of ticks that have passed since damage was last taken
+	
+	Animation animation;
 	
 	protected double gravity = .2;
 	
@@ -113,7 +116,7 @@ public abstract class PlayerState
 		
 		if(player.getX() < 0)
 			player.setX(0);
-		if(player.getX() > Title.WIDTH)
+		else if(player.getX() > Title.WIDTH)
 			player.setX(Title.WIDTH);
 		
 		if(delayDamage && delayed > DELAYTIME)

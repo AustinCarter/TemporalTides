@@ -10,8 +10,8 @@ public class Flyer extends Enemy
 	{
 		super(x, y);
 		//gravity = 0;
-		height = 16;
-		width = 16;
+		height = 32;
+		width = 32;
 		damage = 5;
 		health = 50;
 	}

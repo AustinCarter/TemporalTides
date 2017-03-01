@@ -19,13 +19,14 @@ public class Attack
 	private double height;
 	
 	private double x;
-	private double y;
+	private double y; 
 	
 	private double fireAngle;
 	
-	private int realeaseFrame;
-	
+	private boolean collided = false;
+		
 	Animation animation;
+	Animation deathAnimation;
 	
 	protected int damage;
 	
@@ -53,13 +54,18 @@ public class Attack
 	
 	public void update()
 	{
-		x += xSpeed;
-		y += ySpeed;
-		traveled += speed;		
+		if(! collided)
+		{
+			x += xSpeed;
+			y += ySpeed;
+			traveled += speed;	
+		}
+			
 		
 	}
 	
-	public int getDamage(){return damage;}
+	public int getDamage(){collided = true; return damage;}
+	
 	public Rectangle getBounds()
 	{
 		return new Rectangle((int)(x - width/2), (int)(y - height/2),(int)height,(int)width);
