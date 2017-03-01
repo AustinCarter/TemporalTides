@@ -3,6 +3,8 @@ package temporalTides.sprite;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
+import temporalTides.controller.Resources;
+
 public class Brute extends Enemy
 {
 	
@@ -13,12 +15,15 @@ public class Brute extends Enemy
 		width = 16;
 		damage = 5;
 		health = 50;
+		animation = new Animation();
+		animation.setFrames(Resources.BRUTE[0]);
 	}
 	
 	public void draw(Graphics2D g)
 	{
-		g.setColor(Color.MAGENTA);
-		g.drawRect((int)(x - width/2), (int)(y - height/2), width, height);
+		/*g.setColor(Color.MAGENTA);
+		g.drawRect((int)(x - width/2), (int)(y - height/2), width, height);*/
+		g.drawImage(animation.getImage(),(int)(x - width/2), (int)(y - height/2),null);
 	}
 	
 	public void update()

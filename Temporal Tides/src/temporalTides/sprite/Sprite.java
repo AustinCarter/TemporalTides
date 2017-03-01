@@ -109,6 +109,8 @@ public abstract class  Sprite
 			x = 0;
 		if(x > Title.WIDTH)
 			x = Title.WIDTH;
+		
+		animation.update();
 	}
 		
 	public void attack()

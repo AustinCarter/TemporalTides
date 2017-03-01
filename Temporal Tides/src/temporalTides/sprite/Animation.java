@@ -23,7 +23,7 @@ public class Animation
 		currentFrame = 0;
 		count = 0;
 		timesPlayed = 0;
-		delay = 2;
+		delay = 10;
 		numFrames = frames.length;
 	}
 	
@@ -38,11 +38,13 @@ public class Animation
 		
 		count++;
 		
-		if(count == delay) {
+		if(count == delay) 
+		{
 			currentFrame++;
 			count = 0;
 		}
-		if(currentFrame == numFrames) {
+		if(currentFrame == numFrames) 
+		{
 			currentFrame = 0;
 			timesPlayed++;
 		}

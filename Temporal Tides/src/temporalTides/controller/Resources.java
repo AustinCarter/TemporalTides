@@ -8,12 +8,13 @@ import javax.imageio.ImageIO;
 public class Resources 
 {
 	//public static BufferedImage[][] MENUBG = load("/HUD/menuscreen.gif", 128, 144);
-	public static BufferedImage[][] BAR = load("/HUD/bar.png", 128, 16);
+	public static BufferedImage[][] BAR = load("/HUD/Bar.png", 800, 64);
+	public static BufferedImage[][] FILL = load("/HUD/HealthBarFIll.png",237,17);
 	
-	public static BufferedImage[][] PLAYER = load("/Sprites/playersprites.png", 16, 16);
-	//public static BufferedImage[][] DIAMOND = load("/Sprites/diamond.png", 16, 16);
-	public static BufferedImage[][] SPARKLE = load("/Sprites/sparkle.png", 16, 16);
-	public static BufferedImage[][] ITEMS = load("/Sprites/items.png", 16, 16);
+	public static BufferedImage[][] ARCHER = load("/Sprites/Archer.png", 16, 32);
+	public static BufferedImage[][] BRUTE = load("/Sprites/Brute.png", 16, 32);
+	public static BufferedImage[][] WISP = load("/Sprites/Wisp.png", 48, 64);
+	public static BufferedImage[][] FLYER = load("/Sprites/Flyer.png", 16, 16);
 	
 	//public static BufferedImage[][] font = load("/HUD/font.png", 8, 8);
 	
