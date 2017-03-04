@@ -6,6 +6,7 @@ import java.awt.Rectangle;
 
 import temporalTides.controller.KeyController;
 import temporalTides.controller.MouseController;
+import temporalTides.controller.Resources;
 import temporalTides.main.Title;
 import temporalTides.map.Tile;
 import temporalTides.sprite.Animation;
@@ -23,8 +24,6 @@ public abstract class PlayerState
 	protected final int DELAYTIME = 10;//amount of invincible ticks the player gets after being damaged
 	protected int delayed = 0;//the current amount of ticks that have passed since damage was last taken
 	
-	Animation animation;
-	
 	protected double gravity = .2;
 	
 	public Rectangle getBounds()
@@ -35,7 +34,7 @@ public abstract class PlayerState
 	public void draw(Graphics2D g)
 	{
 		g.setColor(Color.CYAN);
-		g.drawRect((int)(player.getX()  - player.getWidth() / 2),(int)(player.getY()  - player.getHeight() / 2),player.getWidth(),player.getHeight());		
+		//g.drawImage(playre.getAnimation.getImage(),(int)(player.getX()  - player.getWidth() / 2),(int)(player.getY()  - player.getHeight() / 2),null);		
 	}
 	
 	public boolean collide(Attack a)
@@ -88,12 +87,31 @@ public abstract class PlayerState
 			player.attack();
 		}
 		
+		if(!KeyController.anyKeyDown() && !airborne)
+		{
+			player.getAnimation().setFrame(0);
+		}
+		else if(KeyController.isPressed(KeyController.RIGHT))
+		{
+			player.setAnimation(Resources.PLAYER_WALK[0]);
+			player.setArmAnimation(Resources.PLAYER_ARM[0]);
+			player.shift = 2;
+		}
+		else if(KeyController.isPressed(KeyController.LEFT))
+		{
+			player.setAnimation(Resources.PLAYER_WALK[1]);
+			player.setArmAnimation(Resources.PLAYER_ARM[1]);
+			player.shift = 13;
+		}
+		
 		if(KeyController.isDown(KeyController.LEFT))
 		{
+			player.getAnimation().update();
 			player.setX(player.getX() - 5);
 		}
 		if(KeyController.isDown(KeyController.RIGHT))
 		{
+			player.getAnimation().update();
 			player.setX(player.getX() + 5);
 		}
 		if(KeyController.isPressed(KeyController.UP) && !airborne)
