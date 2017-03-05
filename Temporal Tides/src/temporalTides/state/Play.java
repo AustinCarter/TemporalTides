@@ -76,8 +76,9 @@ public class Play extends State
 	@Override
 	public void draw(Graphics2D g) 
 	{
-		player.draw(g);	
+		
 		currentMap.draw(g);
+		player.draw(g);			
 		for(Enemy e: currentMap.getEnemies())
 		{
 			e.draw(g);
@@ -108,5 +109,7 @@ public class Play extends State
 		}
 		
 	}
+	
+	
 
 }

@@ -19,6 +19,6 @@ public abstract class Enemy extends Sprite
 	}
 	
 	
-	public void Update(){}
+	public void Update(){super.update();}
 
 }
