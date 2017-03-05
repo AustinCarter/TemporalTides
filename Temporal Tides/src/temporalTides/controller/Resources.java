@@ -16,11 +16,6 @@ public class Resources
 	public static BufferedImage[][] WISP = load("/Sprites/Wisp.png", 48, 64);
 	public static BufferedImage[][] FLYER = load("/Sprites/Flyer.png", 16, 16);
 	
-	public static BufferedImage[][] BOLTS_TORNADO = load("/Sprites/Bolt_Tornado.png",16,8);
-	
-	public static BufferedImage[][]PLAYER_WALK = load("/Sprites/CharWalk.png",16,32);
-	public static BufferedImage[][]PLAYER_ARM = load("/Sprites/PlayerArm.png",4,18);
-	
 	//public static BufferedImage[][] font = load("/HUD/font.png", 8, 8);
 	
 	public static BufferedImage[][] load(String s, int w, int h) 

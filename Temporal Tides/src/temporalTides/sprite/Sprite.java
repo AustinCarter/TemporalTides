@@ -5,7 +5,6 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 
-import temporalTides.controller.Resources;
 import temporalTides.main.Title;
 import temporalTides.map.Tile;
 import temporalTides.playerStates.PlayerState;
@@ -23,8 +22,8 @@ public abstract class  Sprite
 	
 	protected double gravity = .2;
 	
-	protected Animation animation = new Animation();
-	//protected int currentAnimation;
+	protected Animation animation;
+	protected int currentAnimation;
 	
 	
 	
@@ -116,7 +115,7 @@ public abstract class  Sprite
 		
 	public void attack()
 	{
-		myAttacks.add(new Attack(x,y,20,10,300,Resources.BOLTS_TORNADO[0]));
+		myAttacks.add(new Attack(x,y,20,15,300));
 	}
 	
 	public void clearAttacks()

@@ -51,13 +51,10 @@ public class Animation
 		
 	}
 	
-	public int getHeight() {return frames[0].getHeight();}
-	public int getWidth() {return frames[0].getWidth();}
 	public int getFrame() { return currentFrame; }
 	public int getCount() { return count; }
 	public BufferedImage getImage() { return frames[currentFrame]; }
 	public boolean hasPlayedOnce() { return timesPlayed > 0; }
 	public boolean hasPlayed(int i) { return timesPlayed == i; }
-	public BufferedImage[] getFrames() {return frames;}
 	
 }

@@ -3,7 +3,6 @@ package temporalTides.main;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.GraphicsConfiguration;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
@@ -21,7 +20,7 @@ public class Title extends JPanel implements Runnable, KeyListener, MouseListene
 {
 	public static int WIDTH = 1024;
 	public static int HEIGHT = 576;
-		
+	
 	private int mousex;
 	private int mousey;
 	
@@ -116,7 +115,6 @@ public class Title extends JPanel implements Runnable, KeyListener, MouseListene
 			thread.start();
 		}
 	}
-	
 
 	@Override
 	public void keyPressed(KeyEvent e) {KeyController.process(e.getKeyCode(), true);}
