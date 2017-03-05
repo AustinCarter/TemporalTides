@@ -31,11 +31,11 @@ public abstract class PlayerState
 		return new Rectangle((int)(player.getX()  - player.getWidth() / 2),(int)(player.getY()  - player.getHeight() / 2),player.getWidth(),player.getHeight());
 	}	
 	
-	public void draw(Graphics2D g)
+	/*public void draw(Graphics2D g)
 	{
 		g.setColor(Color.CYAN);
 		//g.drawImage(playre.getAnimation.getImage(),(int)(player.getX()  - player.getWidth() / 2),(int)(player.getY()  - player.getHeight() / 2),null);		
-	}
+	}*/
 	
 	public boolean collide(Attack a)
 	{
@@ -119,6 +119,8 @@ public abstract class PlayerState
 			 player.setVy(-5);;
 			airborne = true;
 		}
+		if(KeyController.isPressed(KeyController.SHIFT))
+			player.setState(new DashState(player,(int)MouseController.mousex,(int)MouseController.mousey,60));
 		
 		else if(player.getY() > Title.HEIGHT - (50 + player.getHeight()))
 		{
