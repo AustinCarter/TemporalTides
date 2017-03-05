@@ -94,7 +94,7 @@ public class Player extends Sprite
 				if(! (RGB == 0))
 				{
 					g.fillRect((int)Math.floor(x - width/2+shift +j*Math.cos(armAngle) + i*Math.sin(armAngle)), 
-							(int)Math.floor(y - height/2 + 8 + j*Math.sin(armAngle)*-1 + i*Math.cos(armAngle)),1,1); 
+							(int)Math.floor(y - height/2 + 7 + j*Math.sin(armAngle)*-1 + i*Math.cos(armAngle)),1,1); 
 					
 					/*g.fillRect((int)Math.ceil(x - width/2+shift +j*Math.cos(armAngle) + i*Math.sin(armAngle)), 
 							(int)Math.ceil(y - height/2 + 7 + j*Math.sin(armAngle)*-1 + i*Math.cos(armAngle)),1,1);*/
@@ -104,7 +104,7 @@ public class Player extends Sprite
 			}
 		}
 		
-		//g.drawRect((int)(x - width/s2)+shift, (int)(y - height/2) + 7, pArm.getWidth(), pArm.getHeight());
+		//g.drawRect((int)(x - width/2)+shift, (int)(y - height/2) + 7, pArm.getWidth(), pArm.getHeight());
 		
 		for(Attack a: myAttacks)
 			a.draw(g);
@@ -188,6 +188,8 @@ public class Player extends Sprite
 
 	   AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
 	   // pArm = op.filter(bufferedImage, null);*/
+	    
+		System.out.printf("Player Fire Angle updated to %f radians \n", d);
 	}
 	
 	/*public static Image rotate(Image img, double angle)

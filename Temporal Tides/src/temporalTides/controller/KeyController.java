@@ -5,7 +5,7 @@ import java.awt.event.KeyEvent;
 public class KeyController
 {
 
-	public static final int NUM_KEYS = 9;
+	public static final int NUM_KEYS = 8;
 	
 	public static boolean keys[] = new boolean[NUM_KEYS];
 	public static boolean lastKeys[] = new boolean[NUM_KEYS];
@@ -18,7 +18,6 @@ public class KeyController
 	public static int ENTER = 5;
 	public static int ESCAPE = 6;
 	public static int E = 7;
-	public static int SHIFT = 8;
 	
 	public static void process(int i, boolean pressed)
 	{
@@ -55,10 +54,6 @@ public class KeyController
 			case KeyEvent.VK_ESCAPE:
 				keys[ESCAPE] = pressed;
 				break;			
-				
-			case KeyEvent.VK_SHIFT:
-				keys[SHIFT] = pressed;
-				break;
 		}
 		
 		
