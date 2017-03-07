@@ -121,7 +121,7 @@ public abstract class  Sprite
 	
 	public void clearAttacks()
 	{
-		myAttacks = new ArrayList<Attack>();
+		myAttacks.clear();
 	}
 	
 	public void setPosition(double x, double y)

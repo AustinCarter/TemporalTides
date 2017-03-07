@@ -15,7 +15,7 @@ public class Room
 	
 	//boolean cleared = true;
 	
-	
+	//temporary constructors 
 	public Room()
 	{
 		tiles.add(new Tile(200,200));

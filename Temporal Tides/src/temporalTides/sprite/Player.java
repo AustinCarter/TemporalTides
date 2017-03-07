@@ -190,7 +190,7 @@ public class Player extends Sprite
 	   AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
 	   // pArm = op.filter(bufferedImage, null);*/
 	    
-		System.out.printf("Player Fire Angle updated to %f radians \n", d);
+		//System.out.printf("Player Fire Angle updated to %f radians \n", d);
 	}
 	
 	/*public static Image rotate(Image img, double angle)
