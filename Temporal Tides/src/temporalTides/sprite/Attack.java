@@ -3,12 +3,9 @@ package temporalTides.sprite;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
-import java.awt.geom.AffineTransform;
-import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 
 import temporalTides.controller.MouseController;
-import temporalTides.main.Title;
 import temporalTides.state.Play;
 
 public class Attack 

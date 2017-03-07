@@ -104,6 +104,11 @@ public abstract class PlayerState
 			player.shift = 13;
 		}
 		
+		if(KeyController.isPressed(KeyController.Q))
+		{
+			player.setState(new DashState(player, 60));
+			
+		}
 		if(KeyController.isDown(KeyController.LEFT))
 		{
 			player.getAnimation().update();
@@ -119,6 +124,7 @@ public abstract class PlayerState
 			 player.setVy(-5);;
 			airborne = true;
 		}
+		
 		
 		else if(player.getY() > Title.HEIGHT - (50 + player.getHeight()))
 		{

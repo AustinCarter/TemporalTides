@@ -80,21 +80,22 @@ public class Player extends Sprite
 		
 		//g.drawImage(playerArm.getImage(),(int)(x - width/2)+shift,(int)(y - height/4 - 1) ,null);
 		
+		double cos = Math.cos(armAngle);
+		double sin = Math.sin(armAngle);
+		
 		for(int i = 0; i < playerArm.getHeight(); i++)
 		{
 			for(int j = 0; j < playerArm.getWidth(); j++)
 			{
 				
 				int RGB = playerArm.getImage().getRGB(j, i);
-				
-				 
-				
+								 				
 				g.setColor(new Color(RGB));
 				//System.out.println(g.getColor());
 				if(! (RGB == 0))
 				{
-					g.fillRect((int)Math.floor(x - width/2+shift +j*Math.cos(armAngle) + i*Math.sin(armAngle)), 
-							(int)Math.floor(y - height/2 + 7 + j*Math.sin(armAngle)*-1 + i*Math.cos(armAngle)),1,1); 
+					g.fillRect((int)Math.floor(x - width/2+shift +j*cos + i*sin), 
+							(int)Math.floor(y - height/2 + 7 + j*sin*-1 + i*cos),1,1); 
 					
 					/*g.fillRect((int)Math.ceil(x - width/2+shift +j*Math.cos(armAngle) + i*Math.sin(armAngle)), 
 							(int)Math.ceil(y - height/2 + 7 + j*Math.sin(armAngle)*-1 + i*Math.cos(armAngle)),1,1);*/
